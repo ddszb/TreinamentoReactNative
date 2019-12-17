@@ -8,6 +8,7 @@ export default class Card extends Component {
     return (
       <TouchableOpacity style={styles.container}
       onPress={() => this.props.navigation.navigate('Details', {
+        image: this.props.info.image == null ? 'https://i.ibb.co/YfZFr7k/noimg.png' : this.props.info.image.original ,
         plot : this.props.info.summary,
         name: this.props.info.name,
         rating: this.props.info.rating.average
@@ -37,23 +38,31 @@ const styles = StyleSheet.create({
   cardView: {
     alignItems: 'center',
     flexDirection: 'row',
+    backgroundColor:'#cab0d8',
+    // borderRadius: 50,
+    borderWidth:3,
+    borderColor:'#cab0cf',
+    opacity:0.8
+    
   },
   image: {
+    borderRadius:5,
     width: 80,
-    height: 120,
-    backgroundColor:'black',
-    resizeMode: 'contain',
-    borderRadius:4
+    height: 80,
+    resizeMode: 'contain'
   },
   name: {
     fontSize: 20,
+    fontFamily:'sans-serif-medium',
     marginLeft: 10,
-    color:'#0e990f',
+    marginRight: 80,
+    color:'#754b8b',
+    
     flexWrap:'wrap'
   },
   genres: {
     fontSize: 16,
     marginLeft: 10,
-    color:'#11ad14'
+    color:'#997bba'
   },
 });

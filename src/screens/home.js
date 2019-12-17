@@ -1,5 +1,5 @@
 import React, {Component} from 'react'; // 1
-import {Text, View, StyleSheet, TextInput, FlatList} from 'react-native';
+import {Text, View, StyleSheet, TextInput, FlatList, ImageBackground} from 'react-native';
 import api from '../service/api';
 import Card from '../components/card';
 
@@ -29,6 +29,8 @@ export default class HomeScreen extends Component {
     render() {
       return (
         <View style={styles.screen}>
+          <ImageBackground style={ styles.imgBackground } 
+                 source={require('../images/home_background.png')}>
           <View style={styles.search}>
             <TextInput
             placeholder={'Busque uma série'}
@@ -38,13 +40,16 @@ export default class HomeScreen extends Component {
            />
           </View>
           <View style={styles.results}>
+          
             <FlatList
               data={this.state.searchResults}
               renderItem={({ item }) => <Card info={item.show}
                                         navigation={this.props.navigation}/>}
               keyExtractor={item => item.show.id}
             />
+            
           </View>
+          </ImageBackground>
         </View>
       );
     }
@@ -62,24 +67,30 @@ export default class HomeScreen extends Component {
       alignItems: 'center',
     },
     input: {
-      marginTop: 55,
+      marginTop: 15,
       height: 40,
       width: 250,
       borderWidth: 1,
-      padding: 10,
+      // padding: 10,
       fontSize: 20,
-      marginBottom: 30,
+      // marginBottom: 30,
+      
       borderRadius:25,
-      borderColor:"#0e990f",
-      color: "#11ad14",
+      borderColor:"#754b8b",
+      color: "#997bba",
       textAlign:'center',
   
     },
     results: {
       flex: 4,
-      backgroundColor: 'lightgray',
+      // backgroundColor: 'lightgray',
       alignItems: 'center',
     },
+    imgBackground: {
+      width: '100%',
+      height: '100%',
+      flex: 1 
+  },
   });
 
 
